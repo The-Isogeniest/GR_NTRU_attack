@@ -137,5 +137,5 @@ python attack.py 256 --2016_estimation=True --layer=0
 The previous command outputs the estimation of the blocksize needed to retrieve the ternary key
 when no dimension reduction is applied i.e., lattice dimension is 1024.
 
-To get the estimation for the blocksize in the case of one-layer or tw-layers attack,
+To get the estimation for the blocksize in the case of one-layer or two-layers attack,
 replace 0 by 1,2, respectively.
