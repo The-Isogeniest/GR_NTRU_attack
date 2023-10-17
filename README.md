@@ -1,7 +1,7 @@
 # Extension of Gentry's attack to non-commutative group-ring NTRU over dihedral group
 This repository contains the scripts accompanying the article
 
-## Providing one-layer attack and two-layer attack for composite parameters for group-ring NTRU over dihedral group 
+## Providing one-layer attack and two-layer attack for composite parameters of group-ring NTRU over dihedral group 
 
 
 # Requirements
