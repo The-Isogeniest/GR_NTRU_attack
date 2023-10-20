@@ -13,59 +13,59 @@ This repository contains the scripts accompanying the article
 
 # Description of files
 Short description of the content:
-* `attack.py` main file to run lattice reduction attack on group-ring NTRU (GR-NTRU) over dihedral group.
-* `DiTRU.py` contains the functions for key generation, encryption and decryption for GR-NTRU over dihedral group.
+* `attack.py` main file to run lattice reduction attack on group-ring NTRU (GR-NTRU) over the dihedral group.
+* `DiTRU.py` contains the functions for key generation, encryption, and decryption for GR-NTRU over the dihedral group.
 * `utils.py` contains helping functions
-* folder `keys_dumps` contains two folders `layer_1` and `layer_2`: each of them contains two subfolders `records` and `seeds`
+* folder `keys_dumps` contains two folders, `layer_1` and `layer_2`: each of them contains two subfolders, `records` and `seeds.`
   * subfolder `records` contains records corresponding to the original keys and the retrieved keys according to the attack
-    ; for one-layer-attack: the records saves `f`,`g`, `key norm`, `h` for the original key 
+    ; for a one-layer-attack: the records save `f`,`g`, `key norm`, `h` for the original key 
     `k1 (non-ternary)`: the non-ternary key retrieved by the attack, `k1-norm`: its norm,`k2 (ternary)`: the ternary key 
      retrieved by the attack,`k2-norm`: its norm,`beta1`: blocksize needed to retrieve k1, `beta2`: blocksize needed to
-     retrieve the ternary key,`total time (seconds)`: total time of the attack,`aux11 (non ternary) : (key, norm)`,
-    `aux12  (non ternary): (key, norm)`, `aux21(ternary) : (key, norm)`, `aux22(ternary) : (key, norm)`: the auxiliary 
+     retrieve the ternary key,`total time (seconds)`: total time of the attack,`aux11 (non-ternary) : (key, norm)`,
+    `aux12  (non-ternary): (key, norm)`, `aux21(ternary) : (key, norm)`, `aux22(ternary) : (key, norm)`: the auxiliary 
      vectors in the smaller lattices that their pull-back gives the vector in the original lattice: aux11, aux12: the 
      auxiliaries for the non-ternary key and aux21, aux22: the auxiliaries for the ternary keys.
-     For two-layers-attack: the records does not store info related to the related to the returned ternary key since it 
-     is not returnable, and the auxiliary vectors are six, first four represent the four vectors lie in the second layer
-     after applying the two-layers attack and last two vectors are the images of the previous four lie in the lattices
+     For a two-layers-attack, the records do not store info related to the returned ternary key since it 
+     is not returnable, and the auxiliary vectors are six; the first four represent the four vectors that lie in the second layer
+     after applying the two-layer attack the last two vectors are the images of the previous four that lie in the lattices
      of the first layer.
   * subfolder `seeds` contains the seeds for which the records have been generated; running the attack using the same 
     seed reproduces the same results.
 # How to use
 
-Run `attack.py` with the following parameters
+Run `attack.py` with the following parameters.
 
-* `n` : defines group-ring NTRU over dihedral group $Z_q D_n $. n: refers to half the order of  the dihedral group
+* `n`: defines group-ring NTRU over dihedral group $Z_q D_n $. n: refers to half the order of  the dihedral group
   Integer. Obligatory parameter. The original lattice dimension before applying the attack is `4n`.
-* `-q`: NTRU modulus. If not entered, it will be calculated automatically to be the first power of two to that guarantees
+* `-q`: NTRU modulus. If not entered, it will be calculated automatically as the first power of two, guaranteeing
  no decryption failure.
-* `--seed`: randomness seed to the to generate key and build the corresponding lattices.
-* `--layer`: 0 for no dimension reduction, 1 to run one-layer attack, 2 to run two-layers attack.
+* `--seed`: randomness seed to generate a key and build the corresponding lattices.
+* `--layer`: 0 for no dimension reduction, 1 to run one-layer attack, 2 to run two-layer attack.
 * `--bkz_betas`: a string as 'b1:b2', where b1 indicates the first blocksize and b2 indicates the last blocksize
 to try upon running progressive bkz.
 * `--dump`: True to save the results into files, False otherwise.
 * `--verbose`: True to print detailed output in the console while running the program, False otherwise.
-* `--filename`: the name of the file where to save the results.
+* `--filename`: the file's name where to save the results.
 
-Parameters related to run experiments on parallel: 
+Parameters related to running experiments in parallel: 
 * `-t` (or `--trials`): number of experiments to run per GR-NTRU dimension 
 * `-w` (or `--workers`): number of parallel experiments to run
-* `--threads`: number of threads used by 1 worker
+* `--threads`: number of threads used by one worker
 
 
 
 # Experiments
 
-To attack GR-NTRU over dihedral group for n=86 and one-layer of attack, you can run
+You can run to attack GR-NTRU over the dihedral group for n=86 and one layer of attack.
 ```
 python attack.py 86 --layer=1  --bkz_betas=3:50 --verbose=True --dump=True
 
 ```
 
 It takes approximately less than two minutes on a laptop.
-It generates a random seed and an instance corresponding to the seed and run the attack.
+It generates a random seed and an instance corresponding to the seed and runs the attack.
 
-To generate a specific example or to reproduce one of our experiments, you can specify the seed
+To generate a specific example or to reproduce one of our experiments, you can specify the seed.
 
 
 ```
@@ -79,7 +79,7 @@ To run 100 trails and  two-layers attack against GR-NTRU with n=128, you can run
 ```
 python attack.py 128 --layer=2  --bkz_betas=3:50 --verbose=True --dump=True --t=100
 ```
-It takes approximately less than half a minute  on a laptop.
+It takes approximately less than half a minute  on a laptop for one trail.
 
 
 
@@ -135,7 +135,7 @@ python attack.py 256 --2016_estimation=True --layer=0
 
 ```
 The previous command outputs the estimation of the blocksize needed to retrieve the ternary key
-when no dimension reduction is applied i.e., lattice dimension is 1024.
+when no dimension reduction is applied, i.e., the lattice dimension is 1024.
 
-To get the estimation for the blocksize in the case of one-layer or two-layers attack,
+To get the estimation for the blocksize in the case of a one-layer or two-layer attack,
 replace 0 by 1,2, respectively.
