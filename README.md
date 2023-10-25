@@ -27,7 +27,7 @@ Short description of the content:
      auxiliaries for the non-ternary key and aux21, aux22: the auxiliaries for the ternary keys.
      For a two-layers-attack, the records do not store info related to the returned ternary key since it 
      is not returnable, and the auxiliary vectors are six; the first four represent the four vectors that lie in the second layer
-     after applying the two-layer attack the last two vectors are the images of the previous four that lie in the lattices
+     after applying the two-layer attack, and the last two vectors are the images of the previous four that lie in the lattices
      of the first layer.
   * subfolder `seeds` contains the seeds for which the records have been generated; running the attack using the same 
     seed reproduces the same results.
