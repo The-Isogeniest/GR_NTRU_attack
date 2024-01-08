@@ -73,11 +73,11 @@ python attack.py 86 --layer=1  --bkz_betas=3:50 --seed=15721658425189707788
 ```
 
 
-To run 100 trials and  two-layers attack against GR-NTRU with n=128, you can run
+To run 100 trials and  two-layer attack against GR-NTRU with n=128, you can run
 
 
 ```
-python attack.py 128 --layer=2  --bkz_betas=3:50 --verbose=True --dump=True --t=100
+python attack.py 128 --layer=2  --bkz_betas=3:50 --verbose=True --dump=True --trials=100
 ```
 It takes approximately less than half a minute  on a laptop for one trial.
 
