@@ -65,7 +65,7 @@ python attack.py 86 --layer=1  --bkz_betas=3:50 --verbose=True --dump=True
 It takes approximately less than two minutes on a laptop.
 It generates a random seed and an instance corresponding to the seed and runs the attack.
 
-To generate a specific example or to reproduce one of our experiments, you can specify the seed.
+You can specify the seed to generate a specific example or reproduce one of our experiments.
 
 
 ```
@@ -73,13 +73,13 @@ python attack.py 86 --layer=1  --bkz_betas=3:50 --seed=15721658425189707788
 ```
 
 
-To run 100 trails and  two-layers attack against GR-NTRU with n=128, you can run
+To run 100 trials and  two-layers attack against GR-NTRU with n=128, you can run
 
 
 ```
 python attack.py 128 --layer=2  --bkz_betas=3:50 --verbose=True --dump=True --t=100
 ```
-It takes approximately less than half a minute  on a laptop for one trail.
+It takes approximately less than half a minute  on a laptop for one trial.
 
 
 
